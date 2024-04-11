@@ -97,7 +97,7 @@ const CreateBook = () => {
 
         <input
           type="submit"
-          className="self-end bg-blue-500 px-4 py-2 rounded text-white hover:bg-blue-600 transition ease-in-out cursor-pointer"
+          className="self-end bg-primary px-4 py-2 rounded text-black hover:bg-primary/80 transition ease-in-out cursor-pointer font-semibold"
         />
       </form>
     </div>

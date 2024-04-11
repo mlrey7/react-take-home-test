@@ -15,10 +15,25 @@ const config: Config = {
       },
     },
     extend: {
+      colors: {
+        primary: "#FFC245",
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      },
+      boxShadow: {
+        menuTabRoundRight: "-3px 3px #FFC245",
+        menuTabRoundLeft: "3px 3px #FFC245",
+      },
+      keyframes: {
+        menuTabFirst: {
+          "100%": { transform: "translateX(100%)" },
+        },
+      },
+      animation: {
+        menuTabFirst: "menuTabFirst ease-in-out infinite",
       },
     },
   },
