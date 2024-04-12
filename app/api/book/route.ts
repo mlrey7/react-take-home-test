@@ -74,3 +74,21 @@ export async function DELETE(req: Request) {
     return new Response("Could not create new book", { status: 500 });
   }
 }
+
+export async function GET() {
+  try {
+    const supabase = createClient();
+
+    const { data, error } = await supabase.from("book").select();
+
+    if (error) throw new Error(`Book fetch failed ${error.message}`);
+
+    return Response.json(data);
+  } catch (error) {
+    if (error instanceof z.ZodError) {
+      return new Response(error.message, { status: 422 });
+    }
+
+    return new Response("Could not create new book", { status: 500 });
+  }
+}

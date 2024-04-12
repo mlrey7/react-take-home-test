@@ -1,8 +1,8 @@
 "use client";
 
+import { useDeleteBook } from "@/hooks/useDeleteBook";
 import { cn } from "@/lib/utils";
-import { BookType, DeleteBookRequest } from "@/lib/validators/book";
-import { useMutation } from "@tanstack/react-query";
+import { BookType } from "@/lib/validators/book";
 import { format } from "date-fns";
 import { Pencil, Trash2 } from "lucide-react";
 import { useRouter } from "next/navigation";
@@ -17,17 +17,7 @@ const Book = ({
 }) => {
   const router = useRouter();
 
-  const { mutate: deleteBook } = useMutation({
-    mutationFn: async (payload: DeleteBookRequest) => {
-      return await fetch("/api/book", {
-        method: "DELETE",
-        body: JSON.stringify(payload),
-      });
-    },
-    onSuccess: () => {
-      router.refresh();
-    },
-  });
+  const { deleteBook } = useDeleteBook();
 
   const handleDelete = () => {
     deleteBook({ id });

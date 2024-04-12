@@ -1,17 +1,13 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import { useCreateBook } from "@/hooks/useCreateBook";
 import BookForm from "./BookForm";
+import { useQueryClient } from "@tanstack/react-query";
 
 const CreateBook = () => {
-  const router = useRouter();
+  const queryClient = useQueryClient();
 
-  const { createBook } = useCreateBook({
-    onSuccess: () => {
-      router.refresh();
-    },
-  });
+  const { createBook } = useCreateBook({});
 
   return (
     <div className="border-b px-4 py-3">

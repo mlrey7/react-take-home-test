@@ -32,7 +32,6 @@ const EditBookModal = ({
   const { editBook } = useEditBook({
     onSuccess: () => {
       router.back();
-      router.refresh();
     },
   });
 
