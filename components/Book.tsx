@@ -36,6 +36,9 @@ const Book = ({
   const handleEdit = () => {
     router.push(
       `/edit_book?id=${id}&title=${title}&author=${author}&publishedDate=${publishedDate}&genre=${genre}`,
+      {
+        scroll: false,
+      },
     );
   };
 

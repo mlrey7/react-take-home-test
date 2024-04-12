@@ -97,7 +97,7 @@ const BookForm = ({
 
       <input
         type="submit"
-        className="cursor-pointer self-end rounded bg-primary px-4 py-2 font-semibold text-black transition ease-in-out hover:bg-primary/80 disabled:pointer-events-none disabled:opacity-50"
+        className="cursor-pointer self-end rounded bg-primary px-4 py-2 font-semibold text-black transition ease-in-out hover:bg-primary/80 disabled:pointer-events-none disabled:bg-primary/30"
         disabled={
           title === "" || author === "" || publishedDate === "" || genre === ""
         }
