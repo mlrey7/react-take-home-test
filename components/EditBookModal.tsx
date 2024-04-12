@@ -1,10 +1,11 @@
 "use client";
 
-import useUpdateBook from "@/hooks/useUpdateBook";
 import { X } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useRef } from "react";
 import { useOnClickOutside } from "usehooks-ts";
+import BookForm from "./BookForm";
+import { useEditBook } from "@/hooks/useEditBook";
 
 const EditBookModal = ({
   id,
@@ -19,24 +20,6 @@ const EditBookModal = ({
   initialTitle: string;
   initialPublishedDate: string;
 }) => {
-  const {
-    author,
-    setAuthor,
-    genre,
-    setGenre,
-    handleSubmit,
-    publishedDate,
-    setPublishedDate,
-    setTitle,
-    title,
-  } = useUpdateBook({
-    id,
-    initialAuthor,
-    initialGenre,
-    initialPublishedDate,
-    initialTitle,
-  });
-
   const router = useRouter();
   const ref = useRef<HTMLDivElement>(null);
 
@@ -45,6 +28,13 @@ const EditBookModal = ({
   };
 
   useOnClickOutside(ref, closeModal);
+
+  const { editBook } = useEditBook({
+    onSuccess: () => {
+      router.back();
+      router.refresh();
+    },
+  });
 
   return (
     <div className="fixed inset-0 bg-black/80 flex items-center justify-center">
@@ -55,66 +45,21 @@ const EditBookModal = ({
         >
           <X className="w-5 h-5 text-red-600" />
         </button>
-        <form
-          className="flex flex-col gap-4"
-          onSubmit={handleSubmit}
-          id="createBookForm"
-        >
-          <div className="flex flex-col gap-2 pb-4 border-b">
-            <label htmlFor="title" className="flex gap-2 items-center">
-              <h2 className="font-semibold">Title:</h2>
-              <input
-                type="text"
-                id="title"
-                name="title"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-                className="border bg-background px-3 py-2 text-sm h-10 rounded-md"
-                placeholder="Title"
-              />
-            </label>
-            <label htmlFor="author" className="flex gap-2 items-center">
-              <h2 className="font-semibold">Author:</h2>
-              <input
-                type="text"
-                id="author"
-                name="author"
-                value={author}
-                onChange={(e) => setAuthor(e.target.value)}
-                className="border bg-background px-3 py-2 text-sm h-10 rounded-md"
-                placeholder="Author"
-              />
-            </label>
-            <label htmlFor="publishedDate" className="flex gap-2 items-center">
-              <h2 className="font-semibold">Published Date:</h2>
-              <input
-                type="date"
-                id="publishedDate"
-                name="publishedDate"
-                value={publishedDate}
-                onChange={(e) => setPublishedDate(e.target.value)}
-                className="border bg-background px-3 py-2 text-sm h-10 rounded-md"
-              />
-            </label>
-            <label htmlFor="genre" className="flex gap-2 items-center">
-              <h2 className="font-semibold">Genre:</h2>
-              <input
-                type="text"
-                id="genre"
-                name="genre"
-                value={genre}
-                onChange={(e) => setGenre(e.target.value)}
-                className="border bg-background px-3 py-2 text-sm h-10 rounded-md"
-                placeholder="Book Genre"
-              />
-            </label>
-          </div>
-
-          <input
-            type="submit"
-            className="self-end bg-primary px-4 py-2 rounded text-black hover:bg-primary/80 transition ease-in-out cursor-pointer font-semibold"
-          />
-        </form>
+        <BookForm
+          initialAuthor={initialAuthor}
+          initialGenre={initialGenre}
+          initialPublishedDate={initialPublishedDate}
+          initialTitle={initialTitle}
+          onSubmit={({ author, genre, publishedDate, title }) => {
+            editBook({
+              author,
+              genre,
+              publishedDate,
+              title,
+              id,
+            });
+          }}
+        />
       </div>
     </div>
   );
