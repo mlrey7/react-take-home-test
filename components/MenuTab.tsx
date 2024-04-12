@@ -5,31 +5,28 @@ import { useState } from "react";
 
 const MenuTab = () => {
   const [index, setIndex] = useState(0);
+  const handleClickTab = (idx: number) => () => {
+    setIndex(idx);
+  };
 
   return (
     <nav className="flex flex-col overflow-clip">
       <div className="grid grid-cols-3 relative cursor-pointer">
         <div
           className={"px-4 py-2 min-w-24 flex justify-center"}
-          onClick={() => {
-            setIndex(0);
-          }}
+          onClick={handleClickTab(0)}
         >
           <h1 className="font-bold text-lg">First</h1>
         </div>
         <div
           className={"px-4 py-2 min-w-24 flex justify-center"}
-          onClick={() => {
-            setIndex(1);
-          }}
+          onClick={handleClickTab(1)}
         >
           <h1 className="font-bold text-lg">Second</h1>
         </div>
         <div
           className={"px-4 py-2 min-w-24 flex justify-center"}
-          onClick={() => {
-            setIndex(2);
-          }}
+          onClick={handleClickTab(2)}
         >
           <h1 className="font-bold text-lg">Third</h1>
         </div>
