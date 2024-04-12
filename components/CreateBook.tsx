@@ -14,7 +14,7 @@ const CreateBook = () => {
   });
 
   return (
-    <div className="px-4 py-3 border-b">
+    <div className="border-b px-4 py-3">
       <BookForm
         initialAuthor=""
         initialGenre=""

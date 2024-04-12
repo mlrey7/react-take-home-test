@@ -35,7 +35,7 @@ const Book = ({
 
   const handleEdit = () => {
     router.push(
-      `/edit_book?id=${id}&title=${title}&author=${author}&publishedDate=${publishedDate}&genre=${genre}`
+      `/edit_book?id=${id}&title=${title}&author=${author}&publishedDate=${publishedDate}&genre=${genre}`,
     );
   };
 
@@ -44,26 +44,26 @@ const Book = ({
       <div className="flex flex-col">
         <h2 className="text-xl font-semibold">{title}</h2>
         <div className="flex gap-1">
-          <p className="text-gray-600 text-sm">{author}</p>
+          <p className="text-sm text-gray-600">{author}</p>
           <span className="text-sm text-gray-600">•</span>
-          <p className="text-gray-600 text-sm">
+          <p className="text-sm text-gray-600">
             {format(new Date(publishedDate), "MMM d, y")}
           </p>
         </div>
         <p className="mt-4 text-sm">{genre}</p>
       </div>
-      <div className="flex gap-2 -mt-1">
+      <div className="-mt-1 flex gap-2">
         <button
-          className="h-8 w-8 cursor-pointer hover:bg-gray-100 rounded-md transition-colors inline-flex items-center justify-center"
+          className="inline-flex h-8 w-8 cursor-pointer items-center justify-center rounded-md transition-colors hover:bg-gray-100"
           onClick={handleEdit}
         >
-          <Pencil className="w-5 h-5 text-green-600" />
+          <Pencil className="h-5 w-5 text-green-600" />
         </button>
         <button
-          className="h-8 w-8 cursor-pointer hover:bg-gray-100 rounded-md transition-colors inline-flex items-center justify-center"
+          className="inline-flex h-8 w-8 cursor-pointer items-center justify-center rounded-md transition-colors hover:bg-gray-100"
           onClick={handleDelete}
         >
-          <Trash2 className="w-5 h-5 text-red-600" />
+          <Trash2 className="h-5 w-5 text-red-600" />
         </button>
       </div>
     </div>

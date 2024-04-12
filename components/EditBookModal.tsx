@@ -37,13 +37,13 @@ const EditBookModal = ({
   });
 
   return (
-    <div className="fixed inset-0 bg-black/80 flex items-center justify-center">
-      <div className="px-12 py-10 bg-white rounded relative" ref={ref}>
+    <div className="fixed inset-0 flex items-center justify-center bg-black/80">
+      <div className="relative rounded bg-white px-12 py-10" ref={ref}>
         <button
-          className="absolute top-2 right-2 h-8 w-8 cursor-pointer hover:bg-gray-100 rounded-md transition-colors inline-flex items-center justify-center"
+          className="absolute right-2 top-2 inline-flex h-8 w-8 cursor-pointer items-center justify-center rounded-md transition-colors hover:bg-gray-100"
           onClick={closeModal}
         >
-          <X className="w-5 h-5 text-red-600" />
+          <X className="h-5 w-5 text-red-600" />
         </button>
         <BookForm
           initialAuthor={initialAuthor}

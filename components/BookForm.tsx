@@ -1,5 +1,4 @@
 "use client";
-import { BookType } from "@/lib/validators/book";
 import React, { FormEvent, useState } from "react";
 
 const BookForm = ({
@@ -46,8 +45,8 @@ const BookForm = ({
       onSubmit={handleSubmit}
       id="createBookForm"
     >
-      <div className="flex flex-col gap-2 pb-4 border-b">
-        <label htmlFor="title" className="flex gap-2 items-center">
+      <div className="flex flex-col gap-2 border-b pb-4">
+        <label htmlFor="title" className="flex items-center gap-2">
           <h2 className="font-semibold">Title:</h2>
           <input
             type="text"
@@ -55,11 +54,11 @@ const BookForm = ({
             name="title"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className="border bg-background px-3 py-2 text-sm h-10 rounded-md"
+            className="bg-background h-10 rounded-md border px-3 py-2 text-sm"
             placeholder="Title"
           />
         </label>
-        <label htmlFor="author" className="flex gap-2 items-center">
+        <label htmlFor="author" className="flex items-center gap-2">
           <h2 className="font-semibold">Author:</h2>
           <input
             type="text"
@@ -67,11 +66,11 @@ const BookForm = ({
             name="author"
             value={author}
             onChange={(e) => setAuthor(e.target.value)}
-            className="border bg-background px-3 py-2 text-sm h-10 rounded-md"
+            className="bg-background h-10 rounded-md border px-3 py-2 text-sm"
             placeholder="Author"
           />
         </label>
-        <label htmlFor="publishedDate" className="flex gap-2 items-center">
+        <label htmlFor="publishedDate" className="flex items-center gap-2">
           <h2 className="font-semibold">Published Date:</h2>
           <input
             type="date"
@@ -79,10 +78,10 @@ const BookForm = ({
             name="publishedDate"
             value={publishedDate}
             onChange={(e) => setPublishedDate(e.target.value)}
-            className="border bg-background px-3 py-2 text-sm h-10 rounded-md"
+            className="bg-background h-10 rounded-md border px-3 py-2 text-sm"
           />
         </label>
-        <label htmlFor="genre" className="flex gap-2 items-center">
+        <label htmlFor="genre" className="flex items-center gap-2">
           <h2 className="font-semibold">Genre:</h2>
           <input
             type="text"
@@ -90,7 +89,7 @@ const BookForm = ({
             name="genre"
             value={genre}
             onChange={(e) => setGenre(e.target.value)}
-            className="border bg-background px-3 py-2 text-sm h-10 rounded-md"
+            className="bg-background h-10 rounded-md border px-3 py-2 text-sm"
             placeholder="Book Genre"
           />
         </label>
@@ -98,7 +97,7 @@ const BookForm = ({
 
       <input
         type="submit"
-        className="self-end bg-primary px-4 py-2 rounded text-black hover:bg-primary/80 transition ease-in-out cursor-pointer font-semibold disabled:pointer-events-none disabled:opacity-50"
+        className="cursor-pointer self-end rounded bg-primary px-4 py-2 font-semibold text-black transition ease-in-out hover:bg-primary/80 disabled:pointer-events-none disabled:opacity-50"
         disabled={
           title === "" || author === "" || publishedDate === "" || genre === ""
         }
